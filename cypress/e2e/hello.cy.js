@@ -1,10 +1,14 @@
-describe('My First Test', () => {
-  it('Visits the Kitchen Sink', () => {
-    cy.visit('https://example.cypress.io')
-    cy.contains('type').click()
-    cy.url().should('include', '/commands/actions')
-    cy.get('.action-email')
-      .type('fake@email.com')
-      .should('have.value', 'fake@email.com')
+describe('Login Test', () => {
+  it('Test Login Scenario', () => {
+    cy.visit('https://istabot.com/')
+    cy.contains('Log In').click()
+    cy.url().should('include', '/login')
+
+    cy.get('input[name="email"]').type('enessusan1@gmail.com');
+    cy.get('input[name="email"]').should('have.value', 'enessusan1@gmail.com');
+    cy.get('input[name ="password"').type('asdfasdf')
+    cy.get('button[type="submit"]').click();
+    cy.contains('Login').click()
+
   })
 })
