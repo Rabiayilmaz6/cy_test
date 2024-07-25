@@ -10,17 +10,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v2 
-
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'
 
-      - name: Install dependencies
+      - name: Initialize npm
         run: npm init -y
 
+      - name: Install dependencies
+        run: npm install cypress --save-dev
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
 
       - name: Run Cypress tests
         run: npx cypress run
