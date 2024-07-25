@@ -10,6 +10,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Cypress run
+        uses: cypress-io/github-action@v2 
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -17,7 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: npm init -y
-        npm install cypress --save-dev
 
 
       - name: Run Cypress tests
