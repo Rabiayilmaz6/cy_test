@@ -1,28 +1,43 @@
-name: Cypress E2E Tests
+name: Cypress Tests with Dependency and Artifact Caching
 
-on: [push]
+on: push
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-
+  install:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Cypress install
+        uses: cypress-io/github-action@v6
         with:
-          node-version: '16'
+          # Disable running of tests within install job
+          runTests: false
+          build: npm run build
 
-      - name: Initialize npm
-        run: npm init -y
+      - name: Save build folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
 
-      - name: Install dependencies
-        run: npm install cypress --save-dev
+  cypress-run:
+    runs-on: ubuntu-22.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download the build folder
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: build
 
       - name: Cypress run
-        uses: cypress-io/github-action@v2
-
-      - name: Run Cypress tests
-        run: npx cypress run --config-file cypress.config.js
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start
+          browser: chrome
