@@ -12,6 +12,8 @@ jobs:
       uses: cypress-io/github-action@v6   
       with: 
         browser: chrome
+      permissions:
+        contents: read
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
