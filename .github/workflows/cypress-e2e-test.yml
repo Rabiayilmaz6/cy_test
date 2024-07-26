@@ -9,10 +9,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Cypress install
-      uses: cypress-io/github-action@v6
-      width: 
-        runTests: false
-        
+      uses: cypress-io/github-action@v6   
     
     - uses: actions/setup-node@v4
         with:
