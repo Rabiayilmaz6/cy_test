@@ -15,6 +15,7 @@ jobs:
       - name: Build project
         run: npm run build
 
+
       - name: Save build folder
         uses: actions/upload-artifact@v4
         with:
