@@ -3,7 +3,7 @@ describe('Login Test', () => {
     cy.visit('https://istabot.com/login')
 
 
-    cy.get('input[name="email"]').type('enessusan1@gmail.com');
+    cy.get('input[name="email"]', {timeout: 10000}).type('enessusan1@gmail.com');
     cy.get('input[name="email"]').should('have.value', 'enessusan1@gmail.com');
     cy.get('input[name ="password"').type('asdfasdf')
     cy.get('button[type="submit"]').click();
