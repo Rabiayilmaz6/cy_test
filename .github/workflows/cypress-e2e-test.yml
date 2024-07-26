@@ -17,17 +17,30 @@ jobs:
       - name: Cypress install
         uses: cypress-io/github-action@v6
         with:
-          # Disable running of tests within install job 
+          # Eğer client klasörü yoksa bu satırı kaldırın
           working-directory: client
           runTests: false
-          build: npm run build
+          # build komutunu kaldırdık çünkü henüz bağımlılıklar yüklenmedi
+          # build: npm run build
+
+      # Bağımlılıkları yükleyelim
+      - name: Install dependencies
+        run: npm ci
+        # Eğer client klasörü varsa:
+        # working-directory: client
+
+      # Şimdi build işlemini gerçekleştirelim
+      - name: Build
+        run: npm run build
+        # Eğer client klasörü varsa:
+        # working-directory: client
 
       - name: Save build folder
         uses: actions/upload-artifact@v4
         with:
           name: build
           if-no-files-found: error
-          path: build
+          path: build  # Eğer client klasöründeyse: client/build
 
   cypress-run:
     runs-on: ubuntu-22.04
@@ -40,10 +53,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
-          path: build
+          path: build  # Eğer client klasöründeyse: client/build
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           start: npm start
           browser: chrome
+          # Eğer client klasörü varsa:
+          # working-directory: client
