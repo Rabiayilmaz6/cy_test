@@ -169,11 +169,12 @@
     "cypress": "^13.13.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "ts-node-dev --respawn src/Union.ts",
-    "serve": "ts-node-dev src/function.ts",
-    "build": "tsc"
-  },
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "watch": "ts-node-dev --respawn src/Union.ts",
+  "serve": "ts-node-dev src/function.ts",
+  "build": "tsc",
+  "start": "ts-node-dev src/function.ts"
+},
   "keywords": [],
   "author": "",
   "license": "ISC"
