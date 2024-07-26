@@ -10,13 +10,13 @@ jobs:
         uses: actions/checkout@v4
 
 steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        cache: 'npm'
-      - run: npm ci
-      - run: npm test
+  - uses: actions/checkout@v4
+  - uses: actions/setup-node@v4
+  with:
+    node-version: 20
+    cache: 'npm'
+  - run: npm ci
+- run: npm test
 
       - name: Install dependencies
         run: npm ci  # veya yarn install --frozen-lockfile veya pnpm install --frozen-lockfile
