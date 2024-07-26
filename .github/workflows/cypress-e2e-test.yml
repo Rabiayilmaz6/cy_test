@@ -12,8 +12,8 @@ jobs:
       uses: cypress-io/github-action@v6   
       with:
           # Disable running of tests within install job
-          runTests: false
-          
+          runTests: true
+
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
