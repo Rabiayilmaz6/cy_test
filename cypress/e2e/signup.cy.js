@@ -1,4 +1,4 @@
-describe('Login Test', () => {
+describe('Sign Up Test', () => {
     it('Test Login Scenario', () => {
       cy.visit('https://istabot.com/')
       cy.contains('Sign Up').click()
