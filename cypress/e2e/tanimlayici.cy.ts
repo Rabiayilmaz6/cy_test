@@ -1,4 +1,5 @@
 import cypress from 'cypress';
+import { eq } from 'cypress/types/lodash';
 
 describe('Istabot File Upload Test', function () {
   before(() => {
@@ -7,20 +8,21 @@ describe('Istabot File Upload Test', function () {
 
   it('Upload file and create project', () => {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-    cy.url().should('include', '/projects');
-     cy.viewport(1920, 1080);
-    // Proje oluşturma sayfasına git
-    cy.visit('https://istabot.com/projects');
     
-    cy.contains('deneme').click({force: true})
-    cy.contains('Descriptive Statistics 8').click({force: true})
-
-    cy.contains('Create Analyse').click({force: true})
-    cy.contains(' Descriptive Statistics ').click({force: true})
+    cy.contains('Descriptive Statistics').click({force: true})
+    
     cy.get('input[type="checkbox"]').eq(0).check(); 
     cy.get('input[type="checkbox"]').eq(2).uncheck(); 
     
+    cy.get('button[type="submit"].flex.items-center.justify-center')
+    .should('be.visible')
+    .contains('Forward')
+    .click({ force: true });
+    cy.get('button span:contains("Create Analyse")').parent('button').click()
     
+    
+    
+
   })
 
 })
