@@ -9,7 +9,15 @@ describe('Login Test', () => {
     cy.get('button[type="submit"]').click();
     cy.contains('Login').click();
 
- 
+    cy.wait(4000)
+
+    cy.get('.relative.flex.justify-center.h-12.sidebar').click({force:true})
+    cy.contains("Log out").click({force:true})
   });
 });
+
+
+
+
+
 

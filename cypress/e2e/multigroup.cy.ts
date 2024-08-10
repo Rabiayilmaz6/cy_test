@@ -10,20 +10,25 @@ describe('Istabot File Upload Test', function () {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
     cy.get('[_ngcontent-ng-c549554740]').contains('Continue to Analysis').click() 
     cy.get('button p:contains("Create Analyse")').click({force: true})
-    cy.contains('Descriptive Statistics').click({force: true})
-    
+
+    cy.get('[_ngcontent-ng-c1355604787]').contains('Multi Group').click() 
     cy.get('input[type="checkbox"]').eq(0).check(); 
-    cy.get('input[type="checkbox"]').eq(2).uncheck(); 
-    
+
     cy.get('button[type="submit"].flex.items-center.justify-center')
     .should('be.visible')
     .contains('Forward')
     .click({ force: true });
-    cy.get('button span:contains("Create Analyse")').parent('button').click()
-    
-    
-    
 
-  })
+    cy.wait(5000)
+
+  cy.get('input[type="checkbox"]').first().check();
+        
+    cy.get('button[type="submit"].flex.items-center.justify-center')
+    .should('be.visible')
+    .contains('Forward')
+    .click({ force: true });
+
+    cy.get('button span:contains("Create Analyse")').parent('button').click()
+    })
 
 })

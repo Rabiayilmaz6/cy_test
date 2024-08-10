@@ -15,11 +15,13 @@ import'cypress-file-upload';
 //
 // -- This is a child command --
 Cypress.Commands.add('login', (email: string, password:string) => {
+    cy.viewport(1920, 1080);
     cy.visit('/login');
     cy.get('input[name="email"]').type(email);
     cy.get('input[name="password"]').type(password);
     cy.get('button[type="submit"]').click(); 
 });
+
 //
 //
 // -- This is a dual command --

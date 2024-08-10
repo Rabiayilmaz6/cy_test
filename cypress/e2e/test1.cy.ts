@@ -2,12 +2,13 @@ import 'cypress-file-upload';
 import cypress from 'cypress';
 
 describe('Istabot File Upload Test', function () {
+  
   before(() => {
     cy.login(Cypress.env('email'), Cypress.env('password'));
   });
 
   it('Upload file and create project', () => {
-    cy.viewport(1920, 1080);
+    
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
     cy.url().should('include', '/projects');
 
@@ -68,17 +69,19 @@ describe('Istabot File Upload Test', function () {
     cy.get('[_ngcontent-ng-c4233696050]').contains('Save').click() 
     
 
-    for (let i = 3; i <= 7; i++) {
-        cy.get('button.text-blue-600').eq(i).contains('Edit').click({ force: true });
-        cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(0).type('label')
-        cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(1).type('label EN')
-        cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(2).type('label2')
-        cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(3).type('label2 EN')
-        cy.get('[_ngcontent-ng-c4233696050]').contains('Save').click() 
-    }
+      for (let i = 3; i <= 7; i++) {
+          cy.get('button.text-blue-600').eq(i).contains('Edit').click({ force: true });
+            cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(0).type('label')
+              cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(1).type('label EN')
+                cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(2).type('label2')
+                  cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(3).type('label2 EN')
+                      cy.get('[_ngcontent-ng-c4233696050]').contains('Save').click() 
+      }
+
     cy.get('[_ngcontent-ng-c1383275076]').contains('Save').click()
     cy.get('[_ngcontent-ng-c1383275076]').contains('Finish Changes').click()
     cy.contains('Finalise').click({ force: true })
   });
   
 });
+
