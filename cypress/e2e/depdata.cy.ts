@@ -17,7 +17,7 @@ describe('Istabot File Upload Test', function () {
     cy.get('input[placeholder="English Definition"]').type('HDL')
 
     cy.get('.ng-select-container').first().click({ force: true });
-    cy.wait(500); 
+    cy.wait(5000); 
     cy.get('.ng-dropdown-panel .ng-option').contains('v7').click();
     cy.get('input[placeholder="Enter Time"]').eq(0).type('tedavi öncesi')
     cy.get('input[placeholder="Enter Time"]').eq(1).type('pre-treatment')
@@ -34,7 +34,7 @@ describe('Istabot File Upload Test', function () {
     cy.get('input[placeholder="English Definition"]').type('LDL')
 
     cy.get('.ng-select-container').first().click({ force: true });
-    cy.wait(500); 
+    cy.wait(5000); 
     cy.get('.ng-dropdown-panel .ng-option').contains('v8').click();
     cy.get('input[placeholder="Enter Time"]').eq(0).type('tedavi öncesi')
     cy.get('input[placeholder="Enter Time"]').eq(1).type('pre-treatment')
@@ -51,7 +51,7 @@ describe('Istabot File Upload Test', function () {
       cy.get('input[placeholder="English Definition"]').type('Trigliserit')
   
       cy.get('.ng-select-container').first().click({ force: true });
-      cy.wait(500); 
+      cy.wait(5000); 
       cy.get('.ng-dropdown-panel .ng-option').contains('v9').click();
       cy.get('input[placeholder="Enter Time"]').eq(0).type('tedavi öncesi')
       cy.get('input[placeholder="Enter Time"]').eq(1).type('pre-treatment')
@@ -68,7 +68,7 @@ describe('Istabot File Upload Test', function () {
     cy.get('input[placeholder="English Definition"]').type('Nötrofil')
 
     cy.get('.ng-select-container').first().click({ force: true });
-    cy.wait(500); 
+    cy.wait(5000); 
     cy.get('.ng-dropdown-panel .ng-option').contains('v10').click();
     cy.get('input[placeholder="Enter Time"]').eq(0).type('tedavi öncesi')
     cy.get('input[placeholder="Enter Time"]').eq(1).type('pre-treatment')
@@ -85,7 +85,7 @@ describe('Istabot File Upload Test', function () {
     cy.get('input[placeholder="English Definition"]').type('Lenfosit')
 
     cy.get('.ng-select-container').first().click({ force: true });
-    cy.wait(500); 
+    cy.wait(5000); 
     cy.get('.ng-dropdown-panel .ng-option').contains('v11').click();
     cy.get('input[placeholder="Enter Time"]').eq(0).type('tedavi öncesi')
     cy.get('input[placeholder="Enter Time"]').eq(1).type('pre-treatment')
@@ -101,7 +101,7 @@ describe('Istabot File Upload Test', function () {
     cy.get('input[type="checkbox"]').eq(0).check();
     cy.get('button span:contains("Create Analyse")').parent('button').click()
 
-
+    
     })
 
 })

@@ -235,7 +235,7 @@ import cypress from 'cypress';
     
         })
 
-        
+
 // """Chi Square"""
 
    it('Chi square', () => {
@@ -256,5 +256,13 @@ import cypress from 'cypress';
 
     cy.get('[_ngcontent-ng-c1355604787]').contains('According to Row').click() 
 })
+    cy.wait(4000)
 
+    cy.get('.relative.flex.justify-center.h-12.sidebar').click({force:true})
+    cy.contains("Log out").click({force:true})
+
+    cy.wait(4000)
+
+    cy.get('.relative.flex.justify-center.h-12.sidebar').click({force:true})
+    cy.contains("Log out").click({force:true})
 });

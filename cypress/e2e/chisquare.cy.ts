@@ -26,8 +26,10 @@ describe('Istabot File Upload Test', function () {
     cy.wait(4000)
     cy.visit('https://istabot.com/projects');
 
-    cy.get('.cursor-pointer.sidebar.w-6.flex.flex-col.place-content-center.hover:shadow-md.overflow-hidden.hover:scale-105.transition-all.origin-left.rounded-r-xl.h-12.border-l-0.border.bg-\\[\\#F5F5F5\\].border-zinc-300').click({force:true})
+    cy.wait(4000)
 
+    cy.get('.relative.flex.justify-center.h-12.sidebar').click({force:true})
+    cy.contains("Log out").click({force:true})
     
 })
 
