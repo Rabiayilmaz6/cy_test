@@ -21,7 +21,7 @@ describe('Istabot File Upload Test', function () {
     .click({ force: true });
     cy.get('button span:contains("Create Analyse")').parent('button').click()
     
-    
+    cy.visit('https://istabot.com/projects');
     
 
   })
