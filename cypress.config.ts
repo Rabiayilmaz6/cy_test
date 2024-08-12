@@ -3,7 +3,7 @@ const fs = require('fs-extra');
   
 
 module.exports = defineConfig({
-  projectId: "qwfszw",
+  projectId: 'vsbu46',
   defaultCommandTimeout: 10000,
   pageLoadTimeout: 60000,
   env: {
