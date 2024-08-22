@@ -8,11 +8,11 @@ describe('Istabot File Upload Test', function () {
 
   it('Upload file and create project', () => {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-    cy.get('[_ngcontent-ng-c549554740]').contains('Continue to Analysis').click() 
+    cy.get('button[name="analysis"]').click() // continue analysis
     cy.get('button p:contains("Create Analyse")').click({force: true})
 
     // ***HDL***
-    cy.get('[_ngcontent-ng-c1355604787]').contains('Dependent Data Analysis').click() 
+    cy.get('button[name="dependent"]').click() 
     cy.get('input[placeholder="Turkish Definition"]').type('HDL')
     cy.get('input[placeholder="English Definition"]').type('HDL')
 

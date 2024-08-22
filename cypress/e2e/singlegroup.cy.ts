@@ -8,10 +8,10 @@ describe('Istabot File Upload Test', function () {
 
   it('Upload file and create project', () => {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-    cy.get('[_ngcontent-ng-c549554740]').contains('Continue to Analysis').click() 
+    cy.get('button[name="analysis"]').click() // continue analysis
     cy.get('button p:contains("Create Analyse")').click({force: true})
     
-    cy.get('[_ngcontent-ng-c1355604787]').contains('Single Group').click() 
+    cy.get('button[name="single"]').click()
 
     cy.get('input[type="checkbox"]').eq(10).check(); 
     cy.get('input[type="text"][id="9"]').type('50', {force: true})
@@ -34,7 +34,16 @@ describe('Istabot File Upload Test', function () {
     .click({ force: true });
 
     cy.get('button span:contains("Create Analyse")').parent('button').click()
-    cy.get('input[type="checkbox"]').eq(0).check(); 
+    cy.get('input[type="checkbox"]').eq(0).check();
+    
+     // log out
+     cy.wait(4000)
+     cy.visit('https://istabot.com/projects');
+ 
+     cy.wait(4000)
+ 
+     cy.get('.relative.flex.justify-center.h-12.sidebar').click({force:true})
+     cy.contains("Log out").click({force:true})
   })
 
 })

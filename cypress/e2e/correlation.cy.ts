@@ -1,18 +1,18 @@
 import cypress from 'cypress';
 import { eq } from 'cypress/types/lodash';
 
-describe('Istabot File Upload Test', function () {
+describe('Create Analyse --corelation--', function () {
   before(() => {
     cy.login(Cypress.env('email'), Cypress.env('password'));
   });
 
   it('Upload file and create project', () => {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-    cy.get('[_ngcontent-ng-c549554740]').contains('Continue to Analysis').click() 
+    cy.get('button[name="analysis"]').click() // continue analysis 
     cy.get('button p:contains("Create Analyse")').click({force: true})
 
     // ***HDL***
-    cy.get('[_ngcontent-ng-c1355604787]').contains('Correlation Analysis').click() 
+    cy.get('button[name="correlation"]').click() 
 
     for (let i = 5; i <= 11 ; i++) {
         cy.get('input[type="checkbox"]').eq(i).check();
@@ -26,6 +26,14 @@ describe('Istabot File Upload Test', function () {
   cy.contains('Forward').click({ force: true })
   cy.get('button span:contains("Create Analyse")').parent('button').click()
 
+  // log out
+    cy.wait(4000)
+    cy.visit('https://istabot.com/projects');
+
+    cy.wait(4000)
+
+    cy.get('.relative.flex.justify-center.h-12.sidebar').click({force:true})
+    cy.contains("Log out").click({force:true})
     })
 
 })

@@ -34,6 +34,7 @@ describe('Istabot File Upload Test', function () {
       .should('be.enabled')
       .click();
       cy.wait(4000)
+
     cy.get('#0').check({force: true})
     cy.get('#0').click({force: true})
     cy.wait(1000)
@@ -50,37 +51,14 @@ describe('Istabot File Upload Test', function () {
 
   
   
-    cy.get('button.text-blue-600').eq(1).contains('Edit').click({ force: true });
+    cy.get('button[name="showValueLabels"]').eq(1).contains('Edit').click();
     
-    cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(0).type('label')
-    cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(1).type('label EN')
-    cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(2).type('label2')
-    cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(3).type('label2 EN')
-    cy.get('[_ngcontent-ng-c4233696050]').contains('Save').click() 
+    cy.get('input[name="labelTr"]').type('label')
+    cy.get('input[name="labelEn"]').eq(1).type('label EN')
+    cy.get('input[name="labelTr"]').eq(2).type('label2')
+    cy.get('input[name="labelEn"]').eq(3).type('label2 EN')
 
-    cy.get('button.text-blue-600').eq(2).contains('Edit').click({ force: true });
-
-    for (let i = 0; i <= 6; i+=2) {
-      cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(i).type(`label-${i} TR`)
-    }
-    for (let i = 1; i <= 7; i+=2) {
-      cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(i).type(`label-${i} EN`)
-    }
-    cy.get('[_ngcontent-ng-c4233696050]').contains('Save').click() 
-    
-
-      for (let i = 3; i <= 7; i++) {
-          cy.get('button.text-blue-600').eq(i).contains('Edit').click({ force: true });
-            cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(0).type('label')
-              cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(1).type('label EN')
-                cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(2).type('label2')
-                  cy.get('input.w-full.h-10.placeholder-white.bg-white.border.rounded-lg').eq(3).type('label2 EN')
-                      cy.get('[_ngcontent-ng-c4233696050]').contains('Save').click() 
-      }
-
-    cy.get('[_ngcontent-ng-c1383275076]').contains('Save').click()
-    cy.get('[_ngcontent-ng-c1383275076]').contains('Finish Changes').click()
-    cy.contains('Finalise').click({ force: true })
+    cy.contains('Save').click({ force: true }) 
   });
   
 });

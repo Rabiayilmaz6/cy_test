@@ -8,8 +8,8 @@ describe('Istabot File Upload Test', function () {
 
   it('Upload file and create project', () => {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-    cy.contains('Continue to Analysis').click({force:true}) 
-    cy.contains('Chi Square Analysis 4').click({force:true})
+    cy.get('button[name="analysis"]').click() // continue analysis 
+    cy.contains('Correlation Analysis 2').click({force:true})
     cy.get('.flex.items-center.justify-center.p-1.bg-white.border-2').eq(1).click()
     cy.contains('Docx').click({force:true})
 })

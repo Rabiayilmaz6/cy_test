@@ -8,10 +8,10 @@ describe('Istabot File Upload Test', function () {
 
   it('Upload file and create project', () => {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-    cy.get('[_ngcontent-ng-c549554740]').contains('Continue to Analysis').click() 
+    cy.get('button[name="analysis"]').click() // continue analysis
     cy.get('button p:contains("Create Analyse")').click({force: true})
 
-    cy.get('[_ngcontent-ng-c1355604787]').contains('Multi Group').click() 
+    cy.get('button[name="multi"]').click()  
     cy.get('input[type="checkbox"]').eq(0).check(); 
 
     cy.get('button[type="submit"].flex.items-center.justify-center')

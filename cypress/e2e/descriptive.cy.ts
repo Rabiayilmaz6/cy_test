@@ -8,7 +8,7 @@ describe('Istabot File Upload Test', function () {
 
   it('Upload file and create project', () => {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-    cy.get('[_ngcontent-ng-c549554740]').contains('Continue to Analysis').click() 
+    cy.contains('Continue to Analysis').click() 
     cy.get('button p:contains("Create Analyse")').click({force: true})
     cy.contains('Descriptive Statistics').click({force: true})
     

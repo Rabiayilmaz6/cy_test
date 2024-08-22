@@ -29,9 +29,9 @@ import cypress from 'cypress';
       cy.viewport(1920, 1080);
       cy.wait(4000)
       // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-      cy.get('[_ngcontent-ng-c549554740]').contains('Continue to Analysis').click({force: true}) 
+      cy.contains('Continue to Analysis').click({force: true}) 
       cy.get('button p:contains("Create Analyse")').click({force: true})
-      cy.contains('Descriptive Statistics').click({force: true})
+      cy.get('img[src="assets/icons/descriptive.svg"]').click({force: true});
       
       cy.get('input[type="checkbox"]').eq(0).check(); 
       cy.get('input[type="checkbox"]').eq(2).uncheck(); 
@@ -53,7 +53,8 @@ import cypress from 'cypress';
       cy.wait(5000)
 
       cy.get('button p:contains("Create Analyse")').click({force: true})
-      cy.get('[_ngcontent-ng-c1355604787]').contains('Single Group').click({force: true}) 
+      cy.get('img[src="assets/icons/single.svg"]').click();
+
 
       cy.get('input[type="checkbox"]').eq(10).check(); 
       cy.get('input[type="text"][id="9"]').type('50', {force: true})
@@ -87,7 +88,7 @@ import cypress from 'cypress';
       // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
       cy.get('button p:contains("Create Analyse")').click({force: true})
 
-      cy.contains('Multi Group').click({force:true}) 
+      cy.get('img[src="assets/icons/multi.svg"]').click({force:true}) 
       cy.get('input[type="checkbox"]').eq(0).check(); 
 
       cy.get('button[type="submit"].flex.items-center.justify-center')
@@ -113,11 +114,15 @@ import cypress from 'cypress';
     it('Dependent Data Analysis', () => {
       cy.viewport(1920, 1080);
       cy.wait(4000)
-      // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
+      
       cy.get('button p:contains("Create Analyse")').click({force: true})
   
       // ***HDL***
-      cy.get('[_ngcontent-ng-c1355604787]').contains('Dependent Data Analysis').click({force:true}) 
+      cy.get('button.flex.items-center.justify-between.group.w-full.p-2')
+      .contains('Dependent Data Analysis')
+      .should('be.visible')
+      .click({force: true});
+         
       cy.get('input[placeholder="Turkish Definition"]').type('HDL')
       cy.get('input[placeholder="English Definition"]').type('HDL')
   
@@ -219,7 +224,8 @@ import cypress from 'cypress';
         cy.get('button p:contains("Create Analyse")').click({force: true})
     
         // ***HDL***
-        cy.get('[_ngcontent-ng-c1355604787]').contains('Correlation Analysis').click() 
+        cy.get('img[src="assets/icons/correlation.svg"]').click({force:true})
+    
     
         for (let i = 5; i <= 11 ; i++) {
             cy.get('input[type="checkbox"]').eq(i).check();
@@ -244,7 +250,7 @@ import cypress from 'cypress';
     cy.wait(4000)
     cy.get('button p:contains("Create Analyse")').click({force: true})
 
-    cy.get('[_ngcontent-ng-c1355604787]').contains('Chi Square Analysis').click() 
+    cy.get('button.flex.items-center.justify-between').contains('Chi Square Analysis').click()
 
     cy.get('input[type="checkbox"]').eq(1).check();
     cy.contains('Forward').click({ force: true })
@@ -254,12 +260,15 @@ import cypress from 'cypress';
 
     cy.get('button span:contains("Create Analyse")').parent('button').click()
 
-    cy.get('[_ngcontent-ng-c1355604787]').contains('According to Row').click() 
+    cy.contains('According to Row').click() 
+    cy.wait(4000)
+    cy.visit('https://istabot.com/projects');
 
     cy.wait(4000)
 
     cy.get('.relative.flex.justify-center.h-12.sidebar').click({force:true})
     cy.contains("Log out").click({force:true})
+    
 })
     
 
