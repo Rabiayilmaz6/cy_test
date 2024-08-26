@@ -13,7 +13,7 @@ describe('Istabot File Upload Test', function () {
     cy.url().should('include', '/projects');
 
     // Proje oluşturma sayfasına git
-    cy.visit('https://istabot.com/projects');
+    cy.visit('http://192.168.1.89:4200/');
 
     cy.contains('Create Project').click();
 
@@ -57,8 +57,37 @@ describe('Istabot File Upload Test', function () {
     cy.get('input[name="labelEn"]').eq(1).type('label EN')
     cy.get('input[name="labelTr"]').eq(2).type('label2')
     cy.get('input[name="labelEn"]').eq(3).type('label2 EN')
+    
 
     cy.contains('Save').click({ force: true }) 
+    
+
+    cy.get('button.text-blue-600').eq(2).contains('Edit').click({ force: true });
+
+    for (let i = 0; i <= 6; i+=2) {
+      cy.get('input[name="labelTr"]').eq(i).type(`label-${i} TR`, {force: true})
+    }
+    for (let i = 1; i <= 7; i+=2) {         
+      cy.get('input[name="labelEn"]').eq(i).type(`label-${i} EN`, {force: true})
+    }
+    cy.contains('Save').click({ force: true }) 
+
+
+      
+    cy.get('button.text-blue-600').eq(3).contains('Edit').click({ force: true });
+
+    for (let i = 3; i <= 7; i++) {
+      cy.get('input[name="labelTr"]').eq(0).type('label', {force: true})
+      cy.get('input[name="labelEn"]').eq(1).type('label EN', {force: true})
+      cy.get('input[name="labelTr"]').eq(2).type('label2', {force: true})
+      cy.get('input[name="labelEn"]').eq(3).type('label2 EN', {force: true})
+      cy.contains('Save').click({ force: true }) 
+    }
+
+    cy.contains('Save').click()
+    cy.contains('Finish Changes').click()
+    cy.contains('Finalise').click({ force: true })
+
   });
   
 });

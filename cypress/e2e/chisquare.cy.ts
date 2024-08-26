@@ -9,7 +9,7 @@ describe('Istabot File Upload Test', function () {
 
   it('Upload file and create project', () => {
     // Login sonrası doğru sayfaya yönlendirildiğinden emin olun
-    cy.get('button[name="analysis"]').click() 
+    cy.get('button[name="analysis"]').click() // continue analysis
     cy.get('button p:contains("Create Analyse")').click({force: true})
 
     cy.get('button[name="chisq"]').click()
@@ -23,7 +23,10 @@ describe('Istabot File Upload Test', function () {
     cy.get('button span:contains("Create Analyse")').parent('button').click()
 
     // cy.get('#start-analyze-process').type("submit").click()
+
     cy.contains('According to Row').click() 
+
+    // log out
     cy.wait(4000)
     cy.visit('https://istabot.com/projects');
 
